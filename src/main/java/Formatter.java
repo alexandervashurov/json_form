@@ -21,7 +21,7 @@ public class Formatter implements Server {
     @NotNull
     private final Gson builder;
 
-    private static final int PORT = 8000;
+    private static final int PORT = 80;
     private static final int CODE_OK = 200;
     private static final String ROOT = "/";
 

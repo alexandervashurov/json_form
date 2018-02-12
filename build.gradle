@@ -1,0 +1,62 @@
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'maven'
+apply plugin: 'docker'
+group = 'TRPO'
+version = '0.1'
+
+
+buildscript {
+    repositories {
+        mavenCentral();
+        jcenter();
+    }
+    dependencies {
+        classpath 'se.transmode.gradle:gradle-docker:1.2'
+    }
+}
+
+description = """"""
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+tasks.withType(JavaCompile) {
+	options.encoding = 'UTF-8'
+}
+
+defaultTasks 'docker'
+
+task wrapper(type: Wrapper) {
+    gradleVersion = "4.1"
+}
+
+task fatJar(type: Jar) {
+    manifest {
+        attributes 'Main-Class': 'Formatter'
+    }
+    baseName = project.name + '-all'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+
+docker {
+    baseImage = 'openjdk:8'
+}
+
+task docker(type: Docker) {
+    dependsOn "fatJar"
+    applicationName = "validation-server"
+    setEnvironment("SERVER_PORT", "80")
+    exposePort(80)
+    addFile('build/libs/formatter-all-0.1.jar', 'opt/formatter-all-0.1.jar')
+    defaultCommand =  ['java', "-jar", "opt/formatter-all-0.1.jar"]
+
+}
+
+repositories {
+     mavenCentral();
+}
+dependencies {
+    compile group: 'com.intellij', name: 'annotations', version:'12.0'
+    compile group: 'com.google.code.gson', name: 'gson', version:'2.8.0'
+}
