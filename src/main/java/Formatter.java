@@ -9,6 +9,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+/**
+ * Class implements Server interface
+ * Task of class is checking valid Json file or not
+ */
+
 public class Formatter implements Server {
 
     @NotNull
@@ -20,7 +25,11 @@ public class Formatter implements Server {
     private static final int CODE_OK = 200;
     private static final String ROOT = "/";
 
-  
+    /**
+     * Checking Json file
+     *
+     * @throws IOException because method create() of HttpServer can throw IOException
+     */
     public Formatter() throws IOException {
         this.builder = new GsonBuilder().setPrettyPrinting().create();
         this.server = HttpServer.create(new InetSocketAddress(PORT), 0);
@@ -55,19 +64,29 @@ public class Formatter implements Server {
         });
     }
 
-
+    /**
+     * Starting server and waiting for a Json files
+     *
+     * @param args - ignored
+     * @throws IOException - because constructor of Formatter can throw IOException
+     */
     public static void main(String[] args) throws IOException {
         Formatter formatter = new Formatter();
         formatter.start();
         Runtime.getRuntime().addShutdownHook(new Thread(formatter::stop));
     }
 
-   
+    /**
+     * Implements method of bind server to HTTP port and start listening.
+     */
     @Override
     public void start() {
         this.server.start();
     }
 
+    /**
+     * Implements method of stop listening and free all the resources.
+     */
     @Override
     public void stop() {
         this.server.stop(0);
