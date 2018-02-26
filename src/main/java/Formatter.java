@@ -68,12 +68,16 @@ public class Formatter implements Server {
      * Starting server and waiting for a Json files
      *
      * @param args - ignored
-     * @throws IOException - because constructor of Formatter can throw IOException
+     * 
      */
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args){
+	try{
         Formatter formatter = new Formatter();
         formatter.start();
         Runtime.getRuntime().addShutdownHook(new Thread(formatter::stop));
+	} catch (IOException ex){
+		System.err.println(ex.toString());
+		}
     }
 
     /**
