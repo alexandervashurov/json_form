@@ -1,0 +1,450 @@
+Started by user Alexander Vashurov
+Obtained Jenkinsfile from git
+https://github.com/alexandervashurov/json_form
+[Pipeline] node
+Running on Jenkins in /var/jenkins_home/workspace/abcd
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+ > git rev-parse --is-inside-work-tree # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url
+https://github.com/alexandervashurov/json_form # timeout=10
+Fetching upstream changes from
+https://github.com/alexandervashurov/json_form
+ > git --version # timeout=10
+ > git fetch --tags --progress
+https://github.com/alexandervashurov/json_form
++refs/heads/*:refs/remotes/origin/*
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+ > git rev-parse refs/remotes/origin/origin/master^{commit} # timeout=10
+Checking out Revision d17497b6d16a28372bb81871093b2d626f9a42c8
+(refs/remotes/origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f d17497b6d16a28372bb81871093b2d626f9a42c8
+Commit message: "Changes in Jenkinsfile"
+ > git rev-list --no-walk a4ed298c0e7a5cc457ed961ee8ac395bf6713d00 #
+timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Clone project)
+[Pipeline] git
+ > git rev-parse --is-inside-work-tree # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url
+https://github.com/alexandervashurov/json_form # timeout=10
+Fetching upstream changes from
+https://github.com/alexandervashurov/json_form
+ > git --version # timeout=10
+ > git fetch --tags --progress
+https://github.com/alexandervashurov/json_form
++refs/heads/*:refs/remotes/origin/*
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+ > git rev-parse refs/remotes/origin/origin/master^{commit} # timeout=10
+Checking out Revision d17497b6d16a28372bb81871093b2d626f9a42c8
+(refs/remotes/origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f d17497b6d16a28372bb81871093b2d626f9a42c8
+ > git branch -a -v --no-abbrev # timeout=10
+ > git branch -D master # timeout=10
+ > git checkout -b master d17497b6d16a28372bb81871093b2d626f9a42c8
+Commit message: "task3"
+[Pipeline] echo
+Clone project executed
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Building)
+[Pipeline] sh
+[abcd] Running shell script
+[Pipeline] sh
+[abcd] Running shell script
++ ./gradlew docker
+Downloading https://services.gradle.org/distributions/gradle-4.1-all.zip
+.........................................................................
+.........................................................................
+.........................................................................
+.........................................................................
+.........................................................................
+.........................................................................
+.........................................................................
+.........................................................................
+.........................................................................
+.........................................................................
+.........................................................................
+.........................................................................
+.........................................................................
+.........................................................................
+.........................................................................
+.........................................................................
+.........................................................................
+.........................................................................
+.........................................................................
+.........................................................................
+.........................................................................
+.........................................................................
+.........................................................................
+.........................................................................
+.........................................................................
+.........................................................................
+.........................................................................
+.........................................................................
+.........................................................................
+.........................................................................
+.........................................................................
+.........................................................................
+.........................................................................
+.........................................................................
+
+.........................................................................
+.........................................................................
+.........................................................................
+.........................................................................
+.........................................................................
+.........................................................................
+.........................................................................
+.........................................................................
+.........................................................................
+.........................................................................
+.........................................................................
+.........................................................................
+.........................................................................
+.........................................................................
+.........................................................................
+.........................................................................
+.........................................................................
+.........................................................................
+.........................................................................
+.........................................................................
+.........................................................................
+.........................................................................
+.........................................................................
+.........................................................................
+.........................................................................
+.........................................................................
+.........................................................................
+..................................................
+Unzipping /root/.gradle/wrapper/dists/gradle-4.1-
+all/bzyivzo6n839fup2jbap0tjew/gradle-4.1-all.zip to
+/root/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew
+Set executable permissions for: /root/.gradle/wrapper/dists/gradle-4.1-
+all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/bin/gradle
+Starting a Gradle Daemon (subsequent builds will be faster)
+Download https://repo1.maven.org/maven2/se/transmode/gradle/gradle-
+docker/1.2/gradle-docker-1.2.pom
+Download
+https://repo1.maven.org/maven2/com/google/guava/guava/17.0/guava-17.0.pom
+Download https://repo1.maven.org/maven2/com/google/guava/guava-
+parent/17.0/guava-parent-17.0.pom
+Download https://repo1.maven.org/maven2/org/sonatype/oss/oss-
+parent/7/oss-parent-7.pom
+Download https://repo1.maven.org/maven2/com/github/docker-java/docker-
+java/0.9.0/docker-java-0.9.0.pom
+Download https://repo1.maven.org/maven2/org/sonatype/oss/oss-
+parent/9/oss-parent-9.pom
+Download
+https://repo1.maven.org/maven2/com/fasterxml/jackson/jaxrs/jackson-jaxrs-
+json-provider/2.3.3/jackson-jaxrs-json-provider-2.3.3.pom
+
+Download
+https://repo1.maven.org/maven2/com/fasterxml/jackson/jaxrs/jackson-jaxrs-
+providers/2.3.3/jackson-jaxrs-providers-2.3.3.pom
+Download https://repo1.maven.org/maven2/com/fasterxml/oss-parent/12/oss-
+parent-12.pom
+Download https://repo1.maven.org/maven2/com/sun/jersey/jersey-
+core/1.18/jersey-core-1.18.pom
+Download https://repo1.maven.org/maven2/com/sun/jersey/jersey-
+project/1.18/jersey-project-1.18.pom
+Download https://repo1.maven.org/maven2/net/java/jvnet-parent/4/jvnet-
+parent-4.pom
+Download https://repo1.maven.org/maven2/com/sun/jersey/jersey-
+client/1.18/jersey-client-1.18.pom
+Download https://repo1.maven.org/maven2/com/sun/jersey/contribs/jersey-
+multipart/1.18/jersey-multipart-1.18.pom
+Download https://repo1.maven.org/maven2/com/sun/jersey/contribs/jersey-
+contribs/1.18/jersey-contribs-1.18.pom
+Download https://repo1.maven.org/maven2/com/sun/jersey/contribs/jersey-
+apache-client4/1.9/jersey-apache-client4-1.9.pom
+Download https://repo1.maven.org/maven2/com/sun/jersey/contribs/jersey-
+contribs/1.9/jersey-contribs-1.9.pom
+Download https://repo1.maven.org/maven2/com/sun/jersey/jersey-
+project/1.9/jersey-project-1.9.pom
+Download https://repo1.maven.org/maven2/net/java/jvnet-parent/1/jvnet-
+parent-1.pom
+Download
+https://repo1.maven.org/maven2/org/apache/httpcomponents/httpclient/4.2.5
+/httpclient-4.2.5.pom
+Download
+https://repo1.maven.org/maven2/org/apache/httpcomponents/httpcomponents-
+client/4.2.5/httpcomponents-client-4.2.5.pom
+Download
+https://repo1.maven.org/maven2/org/apache/httpcomponents/project/6/projec
+t-6.pom
+Download https://repo1.maven.org/maven2/org/apache/commons/commons-
+compress/1.5/commons-compress-1.5.pom
+Download https://repo1.maven.org/maven2/org/apache/commons/commons-
+parent/28/commons-parent-28.pom
+Download https://repo1.maven.org/maven2/org/apache/apache/13/apache-
+13.pom
+Download https://repo1.maven.org/maven2/commons-lang/commons-
+lang/2.6/commons-lang-2.6.pom
+Download https://repo1.maven.org/maven2/org/apache/commons/commons-
+parent/17/commons-parent-17.pom
+Download https://repo1.maven.org/maven2/org/apache/apache/7/apache-7.pom
+Download https://repo1.maven.org/maven2/commons-io/commons-
+io/2.3/commons-io-2.3.pom
+Download https://repo1.maven.org/maven2/org/apache/commons/commons-
+parent/24/commons-parent-24.pom
+Download https://repo1.maven.org/maven2/org/apache/apache/9/apache-9.pom
+
+Download https://repo1.maven.org/maven2/com/github/jnr/jnr-
+unixsocket/0.3/jnr-unixsocket-0.3.pom
+Download https://repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.5/slf4j-
+api-1.7.5.pom
+Download https://repo1.maven.org/maven2/org/slf4j/slf4j-
+parent/1.7.5/slf4j-parent-1.7.5.pom
+Download https://repo1.maven.org/maven2/org/slf4j/jul-to-slf4j/1.7.5/jul-
+to-slf4j-1.7.5.pom
+Download
+https://repo1.maven.org/maven2/com/fasterxml/jackson/jaxrs/jackson-jaxrs-
+base/2.3.3/jackson-jaxrs-base-2.3.3.pom
+Download
+https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-
+core/2.3.3/jackson-core-2.3.3.pom
+Download
+https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-
+databind/2.3.3/jackson-databind-2.3.3.pom
+Download
+https://repo1.maven.org/maven2/com/fasterxml/jackson/module/jackson-
+module-jaxb-annotations/2.3.3/jackson-module-jaxb-annotations-2.3.3.pom
+Download
+https://repo1.maven.org/maven2/org/jvnet/mimepull/mimepull/1.9.3/mimepull
+-1.9.3.pom
+Download https://repo1.maven.org/maven2/org/tukaani/xz/1.2/xz-1.2.pom
+Download https://repo1.maven.org/maven2/com/github/jnr/jnr-ffi/1.0.3/jnr-
+ffi-1.0.3.pom
+Download https://repo1.maven.org/maven2/com/github/jnr/jnr-
+constants/0.8.4/jnr-constants-0.8.4.pom
+Download https://repo1.maven.org/maven2/com/github/jnr/jnr-enxio/0.4/jnr-
+enxio-0.4.pom
+Download
+https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-
+annotations/2.3.0/jackson-annotations-2.3.0.pom
+Download https://repo1.maven.org/maven2/com/fasterxml/oss-parent/11/oss-
+parent-11.pom
+Download https://repo1.maven.org/maven2/com/github/jnr/jffi/maven-
+metadata.xml
+Download https://repo1.maven.org/maven2/com/github/jnr/jffi/1.2.16/jffi-
+1.2.16.pom
+Download https://jcenter.bintray.com/com/github/jnr/jffi/maven-
+metadata.xml
+Download https://repo1.maven.org/maven2/com/github/jnr/jnr-x86asm/maven-
+metadata.xml
+Download https://repo1.maven.org/maven2/com/github/jnr/jnr-
+x86asm/1.0.2/jnr-x86asm-1.0.2.pom
+Download https://jcenter.bintray.com/com/github/jnr/jnr-x86asm/maven-
+metadata.xml
+Download https://repo1.maven.org/maven2/org/ow2/asm/asm/4.0/asm-4.0.pom
+Download https://repo1.maven.org/maven2/org/ow2/asm/asm-parent/4.0/asm-
+parent-4.0.pom
+Download https://repo1.maven.org/maven2/org/ow2/ow2/1.3/ow2-1.3.pom
+
+Download https://repo1.maven.org/maven2/org/ow2/asm/asm-commons/4.0/asm-
+commons-4.0.pom
+Download https://repo1.maven.org/maven2/org/ow2/asm/asm-analysis/4.0/asm-
+analysis-4.0.pom
+Download https://repo1.maven.org/maven2/org/ow2/asm/asm-tree/4.0/asm-
+tree-4.0.pom
+Download https://repo1.maven.org/maven2/org/ow2/asm/asm-util/4.0/asm-
+util-4.0.pom
+Download
+https://repo1.maven.org/maven2/org/apache/httpcomponents/httpcore/4.2.4/h
+ttpcore-4.2.4.pom
+Download
+https://repo1.maven.org/maven2/org/apache/httpcomponents/httpcomponents-
+core/4.2.4/httpcomponents-core-4.2.4.pom
+Download https://repo1.maven.org/maven2/commons-logging/commons-
+logging/1.1.1/commons-logging-1.1.1.pom
+Download https://repo1.maven.org/maven2/org/apache/commons/commons-
+parent/5/commons-parent-5.pom
+Download https://repo1.maven.org/maven2/org/apache/apache/4/apache-4.pom
+Download https://repo1.maven.org/maven2/commons-codec/commons-
+codec/1.6/commons-codec-1.6.pom
+Download https://repo1.maven.org/maven2/org/apache/commons/commons-
+parent/22/commons-parent-22.pom
+Download https://repo1.maven.org/maven2/se/transmode/gradle/gradle-
+docker/1.2/gradle-docker-1.2.jar
+Download https://repo1.maven.org/maven2/com/github/docker-java/docker-
+java/0.9.0/docker-java-0.9.0.jar
+Download
+https://repo1.maven.org/maven2/com/google/guava/guava/17.0/guava-17.0.jar
+Download
+https://repo1.maven.org/maven2/com/fasterxml/jackson/jaxrs/jackson-jaxrs-
+json-provider/2.3.3/jackson-jaxrs-json-provider-2.3.3.jar
+Download https://repo1.maven.org/maven2/com/sun/jersey/contribs/jersey-
+multipart/1.18/jersey-multipart-1.18.jar
+Download https://repo1.maven.org/maven2/com/sun/jersey/contribs/jersey-
+apache-client4/1.9/jersey-apache-client4-1.9.jar
+Download https://repo1.maven.org/maven2/com/sun/jersey/jersey-
+client/1.18/jersey-client-1.18.jar
+Download https://repo1.maven.org/maven2/com/sun/jersey/jersey-
+core/1.18/jersey-core-1.18.jar
+Download
+https://repo1.maven.org/maven2/org/apache/httpcomponents/httpclient/4.2.5
+/httpclient-4.2.5.jar
+Download https://repo1.maven.org/maven2/org/apache/commons/commons-
+compress/1.5/commons-compress-1.5.jar
+Download https://repo1.maven.org/maven2/commons-lang/commons-
+lang/2.6/commons-lang-2.6.jar
+Download https://repo1.maven.org/maven2/commons-io/commons-
+io/2.3/commons-io-2.3.jar
+Download https://repo1.maven.org/maven2/com/github/jnr/jnr-
+unixsocket/0.3/jnr-unixsocket-0.3.jar
+
+Download https://repo1.maven.org/maven2/org/slf4j/jul-to-slf4j/1.7.5/jul-
+to-slf4j-1.7.5.jar
+Download https://repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.5/slf4j-
+api-1.7.5.jar
+Download
+https://repo1.maven.org/maven2/com/fasterxml/jackson/jaxrs/jackson-jaxrs-
+base/2.3.3/jackson-jaxrs-base-2.3.3.jar
+Download
+https://repo1.maven.org/maven2/com/fasterxml/jackson/module/jackson-
+module-jaxb-annotations/2.3.3/jackson-module-jaxb-annotations-2.3.3.jar
+Download
+https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-
+databind/2.3.3/jackson-databind-2.3.3.jar
+Download
+https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-
+core/2.3.3/jackson-core-2.3.3.jar
+Download
+https://repo1.maven.org/maven2/org/jvnet/mimepull/mimepull/1.9.3/mimepull
+-1.9.3.jar
+Download https://repo1.maven.org/maven2/org/tukaani/xz/1.2/xz-1.2.jar
+Download https://repo1.maven.org/maven2/com/github/jnr/jnr-enxio/0.4/jnr-
+enxio-0.4.jar
+Download https://repo1.maven.org/maven2/com/github/jnr/jnr-ffi/1.0.3/jnr-
+ffi-1.0.3.jar
+Download https://repo1.maven.org/maven2/com/github/jnr/jnr-
+constants/0.8.4/jnr-constants-0.8.4.jar
+Download
+https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-
+annotations/2.3.0/jackson-annotations-2.3.0.jar
+Download https://repo1.maven.org/maven2/com/github/jnr/jffi/1.2.16/jffi-
+1.2.16.jar
+Download https://repo1.maven.org/maven2/com/github/jnr/jffi/1.2.16/jffi-
+1.2.16-native.jar
+Download https://repo1.maven.org/maven2/org/ow2/asm/asm-commons/4.0/asm-
+commons-4.0.jar
+Download https://repo1.maven.org/maven2/org/ow2/asm/asm-analysis/4.0/asm-
+analysis-4.0.jar
+Download https://repo1.maven.org/maven2/org/ow2/asm/asm-util/4.0/asm-
+util-4.0.jar
+Download https://repo1.maven.org/maven2/org/ow2/asm/asm-tree/4.0/asm-
+tree-4.0.jar
+Download https://repo1.maven.org/maven2/org/ow2/asm/asm/4.0/asm-4.0.jar
+Download https://repo1.maven.org/maven2/com/github/jnr/jnr-
+x86asm/1.0.2/jnr-x86asm-1.0.2.jar
+Download
+https://repo1.maven.org/maven2/org/apache/httpcomponents/httpcore/4.2.4/h
+ttpcore-4.2.4.jar
+Download https://repo1.maven.org/maven2/commons-logging/commons-
+logging/1.1.1/commons-logging-1.1.1.jar
+Download https://repo1.maven.org/maven2/commons-codec/commons-
+codec/1.6/commons-codec-1.6.jar
+
+Download
+https://repo1.maven.org/maven2/com/google/code/gson/gson/2.8.2/gson-
+2.8.2.pom
+Download https://repo1.maven.org/maven2/com/google/code/gson/gson-
+parent/2.8.2/gson-parent-2.8.2.pom
+Download
+https://repo1.maven.org/maven2/com/google/code/gson/gson/2.8.2/gson-
+2.8.2.jar
+:compileJava
+:processResources NO-SOURCE
+:classes
+:fatJar
+:docker
+Sending build context to Docker daemon  238.6kB
+Step 1/5 : FROM openjdk:8
+8: Pulling from library/openjdk
+723254a2c089: Pulling fs layer
+abe15a44e12f: Pulling fs layer
+409a28e3cc3d: Pulling fs layer
+503166935590: Pulling fs layer
+043a12c29ea4: Pulling fs layer
+303620452447: Pulling fs layer
+c61f95baa024: Pulling fs layer
+3f2018472a1f: Pulling fs layer
+a25f8a69c882: Pulling fs layer
+503166935590: Waiting
+043a12c29ea4: Waiting
+303620452447: Waiting
+c61f95baa024: Waiting
+3f2018472a1f: Waiting
+a25f8a69c882: Waiting
+409a28e3cc3d: Verifying Checksum
+409a28e3cc3d: Download complete
+abe15a44e12f: Verifying Checksum
+abe15a44e12f: Download complete
+043a12c29ea4: Verifying Checksum
+043a12c29ea4: Download complete
+303620452447: Verifying Checksum
+303620452447: Download complete
+c61f95baa024: Verifying Checksum
+c61f95baa024: Download complete
+503166935590: Verifying Checksum
+503166935590: Download complete
+723254a2c089: Verifying Checksum
+723254a2c089: Download complete
+a25f8a69c882: Verifying Checksum
+a25f8a69c882: Download complete
+723254a2c089: Pull complete
+abe15a44e12f: Pull complete
+3f2018472a1f: Verifying Checksum
+
+3f2018472a1f: Download complete
+409a28e3cc3d: Pull complete
+503166935590: Pull complete
+043a12c29ea4: Pull complete
+303620452447: Pull complete
+c61f95baa024: Pull complete
+3f2018472a1f: Pull complete
+a25f8a69c882: Pull complete
+Digest:
+sha256:18c9622a8dc67b608a2dd0178b4c5aebc0e2da9a656072c6e799cfc46cb96422
+Status: Downloaded newer image for openjdk:8
+ ---> 7c57090325cc
+Step 2/5 : ENV SERVER_PORT 80
+ ---> Running in f34544da504f
+Removing intermediate container f34544da504f
+ ---> c252a5e47e6b
+Step 3/5 : EXPOSE 80
+ ---> Running in 41dc4cbc2098
+Removing intermediate container 41dc4cbc2098
+ ---> bd2f722d8622
+Step 4/5 : ADD formatter-all-0.1.jar opt/formatter-all-0.1.jar
+ ---> b8de7decc105
+Step 5/5 : CMD ["java", "-jar", "opt/formatter-all-0.1.jar"]
+ ---> Running in fe73e3c7f75c
+Removing intermediate container fe73e3c7f75c
+ ---> 508a6af37629
+Successfully built 508a6af37629
+Successfully tagged formatter:1.0
+BUILD SUCCESSFUL in 5m 26s
+3 actionable tasks: 3 executed
+[Pipeline] echo
+Building executed
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
