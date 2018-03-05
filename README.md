@@ -14,6 +14,8 @@ Non-functional requirements:
 Samples:
 Run container with service
 docker run -d -p 80:80 github.com/username/projectname
+Run via gradle
+./gradlew docker
 
 Send file to validation
 curl -s --data-binary @filename.json http://localhost
