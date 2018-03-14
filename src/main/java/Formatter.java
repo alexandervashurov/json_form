@@ -33,29 +33,34 @@ public class Formatter implements Server {
     public Formatter() throws IOException {
         this.builder = new GsonBuilder().setPrettyPrinting().create();
         this.server = HttpServer.create(new InetSocketAddress(PORT), 0);
-        Pattern pattern = Pattern.compile("[^:]+:(.*) at line (\\d+) column (\\d+) .*");
-        AtomicInteger requestIds = new AtomicInteger(0);
+        final Pattern pattern = Pattern.compile("[^:]+:(.*) at line (\\d+) column (\\d+) .*");
+        final AtomicInteger requestIds = new AtomicInteger(0);
         this.server.createContext(ROOT, http -> {
-            InputStreamReader isr = new InputStreamReader(http.getRequestBody());
+            final InputStreamReader isr = new InputStreamReader(http.getRequestBody());
             final String jsonRequest = new BufferedReader(isr).lines().collect(Collectors.joining());
             System.out.println("request:" + jsonRequest);
             String jsonResponse;
             try {
                 Object object = builder.fromJson(jsonRequest, Object.class);
                 jsonResponse = builder.toJson(object);
-            } catch (JsonSyntaxException e) {
+            } catch (JsonParseException e) {
                 Matcher matcher = pattern.matcher(e.getMessage());
-                String message = matcher.group(0);
-                String line = matcher.group(1);
-                String column = matcher.group(2);
-                JsonObject jsonError = new JsonObject();
-                String resourceName = http.getRequestMethod().equals("PUT") ? http.getRequestURI().getPath() : "json string";
-                jsonError.addProperty("errorCode", message.hashCode());
-                jsonError.addProperty("errorMessage", message);
-                jsonError.addProperty("errorPlace", "line " + line + " column " + column);
-                jsonError.addProperty("resource", resourceName);
-                jsonError.addProperty("request-id", requestIds.getAndIncrement());
-                jsonResponse = builder.toJson(jsonError);
+                if (!matcher.find()) {
+                    jsonResponse = "Unrecognized error";
+                } else {
+                    String message = matcher.group(1);
+                    String line = matcher.group(2);
+                    String column = matcher.group(3);
+
+                    JsonObject jsonError = new JsonObject();
+                    String resourceName = http.getRequestMethod().equals("PUT") ? http.getRequestURI().getPath() : "json string";
+                    jsonError.addProperty("errorCode", message.hashCode());
+                    jsonError.addProperty("errorMessage", message);
+                    jsonError.addProperty("errorPlace", "line " + line + " column " + column);
+                    jsonError.addProperty("resource", resourceName);
+                    jsonError.addProperty("request-id", requestIds.getAndIncrement());
+                    jsonResponse = builder.toJson(jsonError);
+                }
             }
             System.out.println("response:" + jsonResponse);
             http.sendResponseHeaders(CODE_OK, jsonResponse.length());
@@ -68,16 +73,15 @@ public class Formatter implements Server {
      * Starting server and waiting for a Json files
      *
      * @param args - ignored
-     * 
      */
-    public static void main(String[] args){
-	try{
-        Formatter formatter = new Formatter();
-        formatter.start();
-        Runtime.getRuntime().addShutdownHook(new Thread(formatter::stop));
-	} catch (IOException ex){
-		System.err.println(ex.toString());
-		}
+    public static void main(String[] args) {
+        try {
+            Formatter formatter = new Formatter();
+            formatter.start();
+            Runtime.getRuntime().addShutdownHook(new Thread(formatter::stop));
+        } catch (IOException ex) {
+            System.err.println(ex.toString());
+        }
     }
 
     /**
